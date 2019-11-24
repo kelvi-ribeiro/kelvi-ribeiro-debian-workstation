@@ -2,48 +2,33 @@
 
 AUTHOR="Kelvi Ribeiro"
 EMAIl="kelvi.ribeiro@gmail.com"
-LOW_TIME=1.5
-MEDIUM_TIME=4
-FONTE = "smblock"
+SLEEP_TIME=5
 
 function showWelcomeMessage() {
-  installToilet
-  createMessage "Be Welcome" smblock
-  createMessage "We're about to start" smblock  
-  createMessage "Are you ready? (y/n)" smblock
-  ## echo "Exibir lista de programas...."
-  read  -n 1 -r
+  echo -e "\033[32m+--------------------------------------------------------------+\033[0m"
+  echo -e "\033[32m| Seja bem Vindo, Usuário $USER |\033[0m"
+  echo -e "\033[32m| Autor: $AUTHOR |\033[0m"
+  echo -e "\033[32m| E-mail: $EMAIl |\033[0m"
+  echo -e "\033[32m+--------------------------------------------------------------+\033[0m\\n"
+  echo "Exibir lista de programas...." 
+  read -p "Você tem certeza que fazer isso?? (Y/N)? " -n 1 -r
   breakLine 1
   if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    [[ "$0" == "$BASH_SOURCE" ]] && removeToilet || return 1
+    [[ "$0" == "$BASH_SOURCE" ]] && exit 1 || return 1 
   fi
   startInstallApps
 
 }
 
-function installToilet(){
-   sudo apt-get -y install toilet >/dev/null & 
-}
-
-function removeToilet(){
-   sudo apt-get purge toilet >/dev/null & 
-   exit 1
-}
-
-function createMessage(){
-  sleep $LOW_TIME  
-  toilet -f $2 $1
-}
-
-function breakLine() {
+function breakLine() {  
   for i in $(seq 1 $1); do
     echo
-  done
+  done  
 }
 
 function startInstallApps() {
   echo -e "\033[32m| Iniciando instalação das aplicações.... |\033[0m"
-  sleep $MEDIUM_TIME
+  sleep $SLEEP_TIME
   echo -e "Instalando aplicação do grupo x"
 }
 
