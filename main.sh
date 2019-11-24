@@ -30,6 +30,8 @@ function breakLine() {
 function startInstallApps() {
   echo -e "\033[32m| Iniciando instalação das aplicações.... |\033[0m"
   sleep $SLEEP_TIME
+  installRepositoryApps
+  installSnapAndItsApps
 }
 
 function removesEventualAptLocks() {
@@ -42,6 +44,27 @@ function removesEventualAptLocks() {
 function preparesEnvironment() {
   echo -e "Preparando ambiente..."
   sudo apt update  
+}
+
+function installSnapAndItsApps() {
+  echo -e "Instalando Apps a partir do Snap..."
+  sleep $SLEEP_TIME
+  sudo snap install slack --classic
+  sudo snap install code --classic
+  sudo snap install spotify
+  sudo snap install postman
+  sudo snap install android-studio --classic
+  sudo snap install node --edge --classic
+  sudo snap install intellij-idea-community --classic --edge
+  sudo snap install docker
+  sudo snap install chromium
+}
+
+function installRepositoryApps() {
+  echo -e "Instalando Apps do Repository"
+  sleep $SLEEP_TIME
+  sudo apt install snapd -y
+  sudo apt install default-jdk -y 
 }
 
 function main() {
