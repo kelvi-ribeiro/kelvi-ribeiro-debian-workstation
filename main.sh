@@ -32,6 +32,7 @@ function startInstallApps() {
   sleep $SLEEP_TIME
   installRepositoryApps
   installSnapAndItsApps
+  installDownloadedApp
 }
 
 function removesEventualAptLocks() {
@@ -58,6 +59,11 @@ function installSnapAndItsApps() {
   sudo snap install intellij-idea-community --classic --edge
   sudo snap install docker
   sudo snap install chromium
+  sudo snap install flameshot-app
+  sudo snap install ngrok
+  sudo snap install telegram-desktop
+  sudo snap install flameshot-app
+  sudo snap install google-cloud-sdk --classic
 }
 
 function installRepositoryApps() {
@@ -65,6 +71,15 @@ function installRepositoryApps() {
   sleep $SLEEP_TIME
   sudo apt install snapd -y
   sudo apt install default-jdk -y 
+  sudo apt install git -y 
+  sudo apt-get install curl -y   
+}
+
+function installDownloadedApp(){
+  echo -e "Instalando Apps Baixados"
+  sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
+  sudo chmod +x /usr/local/bin/docker-compose &&
+  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 }
 
 function main() {
