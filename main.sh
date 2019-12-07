@@ -4,7 +4,7 @@ AUTHOR="Kelvi Ribeiro"
 EMAIl="kelvi.ribeiro@gmail.com"
 LOW_SLEEP_TIME=2
 MEDIUM_SLEEP_TIME=4
-PURPLE='\033[0;36m'
+CYAN='\033[0;36m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
@@ -29,7 +29,7 @@ function showWelcomeMessage() {
 }
 
 function showListApps(){
-  echo -e "${PURPLE} Lista de aplicações que irão ser instalados:
+  echo -e "${CYAN} Lista de aplicações que irão ser instalados:
   1. android-studio
   2. chromium
   3. vs-code
