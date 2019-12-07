@@ -1,7 +1,7 @@
 #!/bin/bash
 
 AUTHOR="Kelvi Ribeiro"
-EMAIl="kelvi.ribeiro@gmail.com"
+EMAIL="kelvi.ribeiro@gmail.com"
 LOW_SLEEP_TIME=2
 MEDIUM_SLEEP_TIME=4
 CYAN='\033[0;36m'
@@ -12,7 +12,7 @@ function showWelcomeMessage() {
   echo -e "${GREEN}+--------------------------------------------------------------+${NC}"
   echo -e "${GREEN}| Seja bem Vindo, Usuário $USER |${NC}"
   echo -e "${GREEN}| Autor: $AUTHOR |${NC}"
-  echo -e "${GREEN}| E-mail: $EMAIl |${NC}"
+  echo -e "${GREEN}| E-mail: $EMAIL |${NC}"
   echo -e "${GREEN}+--------------------------------------------------------------+${NC}"
   breakLine 1
   sleep $LOW_SLEEP_TIME
