@@ -99,7 +99,7 @@ function installRepositoryApps() {
   sleep $MEDIUM_SLEEP_TIME
   sudo apt install snapd -y
   sudo apt install default-jdk -y 
-  sudo apt install git 
+  sudo apt install git -y 
   sudo apt-get install curl -y   
 }
 
