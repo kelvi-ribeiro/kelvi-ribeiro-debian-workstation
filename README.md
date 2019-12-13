@@ -20,3 +20,7 @@ chmod a+x ./main.sh &&
 ./main.sh && rm ./main.sh
 ```
 This set of scripts downloads curl to make requests from the terminal, then takes all content from the *main.sh* file and saves it to a file with the same name, then grants the necessary permissions to run the script inside the file, and finally runs the script.
+
+### To do
+- [ ] Importing environment variables
+- [ ] Addition of some more applications like *oh my zsh*
