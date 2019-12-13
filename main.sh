@@ -10,15 +10,15 @@ NC='\033[0m' # No Color
 
 function showWelcomeMessage() {
   echo -e "${GREEN}+--------------------------------------------------------------+${NC}"
-  echo -e "${GREEN}| Seja bem Vindo, Usuário $USER |${NC}"
-  echo -e "${GREEN}| Autor: $AUTHOR |${NC}"
+  echo -e "${GREEN}| Welcome, User : $USER |${NC}"
+  echo -e "${GREEN}| Author: $AUTHOR |${NC}"
   echo -e "${GREEN}| E-mail: $EMAIL |${NC}"
   echo -e "${GREEN}+--------------------------------------------------------------+${NC}"
   breakLine 1
   sleep $LOW_SLEEP_TIME
   showListApps
   breakLine 1
-  read -p "Tem certeza que deseja instalar as aplicações acima ? (Y/N)? " -n 1 -r
+  read -p "Are you sure you want to install the above applications? (Y/N)? " -n 1 -r
   breakLine 1
   if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     [[ "$0" == "$BASH_SOURCE" ]] && exit 1 || return 1
@@ -29,7 +29,7 @@ function showWelcomeMessage() {
 }
 
 function showListApps(){
-  echo -e "${CYAN} Lista de aplicações que irão ser instalados:
+  echo -e "${CYAN} List of applications to be installed:
   1. android-studio
   2. chromium
   3. vs-code
@@ -57,27 +57,27 @@ function breakLine() {
 }
 
 function startInstallApps() {
-  echo -e "\033[32m| Iniciando instalação das aplicações.... |\033[0m"
+  echo -e "\033[32m| Starting application installation.... |\033[0m"
   sleep $MEDIUM_SLEEP_TIME
   installRepositoryApps
   installSnapAndItsApps
-  installDownloadedApp
+  installManualDownloadedApp
 }
 
 function removesEventualAptLocks() {
-  echo -e "Removendo travas eventuais do apt..."
+  echo -e "Removing occasional locks from the apt..."
   sleep $MEDIUM_SLEEP_TIME
   sudo rm /var/lib/dpkg/lock-frontend
   sudo rm /var/cache/apt/archives/lock
 }
 
 function preparesEnvironment() {
-  echo -e "Preparando ambiente..."
+  echo -e "Preparing environment..."
   sudo apt update  
 }
 
 function installSnapAndItsApps() {
-  echo -e "Instalando Apps a partir do Snap..."
+  echo -e "Installing Applications from Snap..."
   sleep $MEDIUM_SLEEP_TIME
   sudo snap install slack --classic
   sudo snap install code --classic
@@ -95,7 +95,7 @@ function installSnapAndItsApps() {
 }
 
 function installRepositoryApps() {
-  echo -e "Instalando Apps do Repository"
+  echo -e "Installing Repository applications..."
   sleep $MEDIUM_SLEEP_TIME
   sudo apt install snapd -y
   sudo apt install default-jdk -y 
@@ -103,8 +103,8 @@ function installRepositoryApps() {
   sudo apt-get install curl -y   
 }
 
-function installDownloadedApp(){
-  echo -e "Instalando Apps Baixados"
+function installManualDownloadedApp(){
+  echo -e "Installing manually downloaded applications..."
   sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
   sudo chmod +x /usr/local/bin/docker-compose &&
   sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
