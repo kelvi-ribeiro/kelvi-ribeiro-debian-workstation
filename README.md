@@ -12,8 +12,7 @@ Although made for a specific workstation, it also has the utility of serving as 
 
 > For a quick installation, copy all the content below and run on your terminal
 
-```bash 
-sudo apt update && 
+```bash  
 sudo apt install curl -y &&  
 curl https://raw.githubusercontent.com/kelvi-ribeiro/kelvi-ribeiro-debian-workstation/master/main.sh  > ./main.sh && 
 chmod a+x ./main.sh && 
