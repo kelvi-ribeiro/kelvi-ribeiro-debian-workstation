@@ -1,5 +1,7 @@
 # kelvi-ribeiro-debian-workstation
 
-> A linux Shell Script to install all programs used by Kelvi Ribeiro, ideal for use after formatting a Debian based OS
+> Learn how to install your entire environment in a personalized way with just one line of code.
 
-**One line install**: `sudo apt update && sudo apt install curl -y &&  curl https://raw.githubusercontent.com/kelvi-ribeiro/kelvi-ribeiro-debian-workstation/master/main.sh  > ./main.sh && chmod a+x ./main.sh && ./main.sh && rm ./main.sh`
+Although made for a specific workstation, it also has the utility of serving as an example to create your own workstation. The proposal is to take step by step how this script was created and both will be refactored as time goes by.
+
+
