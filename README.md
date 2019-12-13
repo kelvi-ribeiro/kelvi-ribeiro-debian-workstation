@@ -4,4 +4,7 @@
 
 Although made for a specific workstation, it also has the utility of serving as an example to create your own workstation. The proposal is to take step by step how this script was created and both will be refactored as time goes by.
 
+| Tested distributions               | Success               |
+| ----------------------------------- | ----------------------- |
+| Ubuntu 19.10                        | :heavy_check_mark:      |
 
