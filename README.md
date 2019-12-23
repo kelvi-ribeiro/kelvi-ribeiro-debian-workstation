@@ -18,9 +18,11 @@ This set of scripts downloads curl to make requests from the terminal, then take
 
 ### Tested distributions 
 
+
 | Distribution               | Success               |
 | ----------------------------------- | ----------------------- |
 | Ubuntu 19.10                        | :heavy_check_mark:      |
+| Elementary OS 5.1 Hera              | :heavy_check_mark:      |
 
 
 ### To do
