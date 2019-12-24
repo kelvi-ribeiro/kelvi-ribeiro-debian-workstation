@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 AUTHOR="Kelvi Ribeiro"
 EMAIL="kelvi.ribeiro@gmail.com"
@@ -8,28 +8,34 @@ CYAN='\033[0;36m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-function showWelcomeMessage() {
-  echo -e "${GREEN}+--------------------------------------------------------------+${NC}"
-  echo -e "${GREEN}| Welcome, User : $USER |${NC}"
-  echo -e "${GREEN}| Author: $AUTHOR |${NC}"
-  echo -e "${GREEN}| E-mail: $EMAIL |${NC}"
-  echo -e "${GREEN}+--------------------------------------------------------------+${NC}"
+showWelcomeMessage() {
+  printf "${GREEN}+--------------------------------------------------------------+${NC}"
+  breakLine 1
+  printf "${GREEN}| Welcome, User : $USER |${NC}"
+  breakLine 1
+  printf "${GREEN}| Author: $AUTHOR |${NC}"
+  breakLine 1
+  printf "${GREEN}| E-mail: $EMAIL |${NC}"
+  breakLine 1
+  printf "${GREEN}+--------------------------------------------------------------+${NC}"  
   breakLine 1
   sleep $LOW_SLEEP_TIME
   showListApps
   breakLine 1
-  read -p "Are you sure you want to install the above applications? (Y/N)? " -n 1 -r
-  breakLine 1
-  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    [[ "$0" == "$BASH_SOURCE" ]] && exit 1 || return 1
-  fi
+  printf "Are you sure you want to install the above applications? (Y/N)? "
+  read opt  
+ case $opt in
+		y*|Y*|"") echo "Starting the Script..." ;;
+		n*|N*) echo "Installation of applications cancelled."; return ;;
+		*) echo "Invalid choice. Installation of applications cancelled."; return ;;
+	esac
   removesEventualAptLocks
   preparesEnvironment
   startInstallApps
 }
 
-function showListApps(){
-  echo -e "${CYAN} List of applications to be installed:
+showListApps(){
+  printf "${CYAN} List of applications to be installed:
   1. android-studio
   2. chromium
   3. vs-code
@@ -50,39 +56,40 @@ function showListApps(){
   18. telegram-desktop ${NC}"
 }
 
-function breakLine() {
+breakLine() {
   for i in $(seq 1 $1); do
     echo
   done
 }
 
-function startInstallApps() {
-  echo -e "\033[32m| Starting application installation.... |\033[0m"
+startInstallApps() {
+  printf "\033[32m| Starting application installation.... |\033[0m"
   sleep $MEDIUM_SLEEP_TIME
   installRepositoryApps
   installSnapAndItsApps
   installManualDownloadedApp
 }
 
-function removesEventualAptLocks() {
-  echo -e "Removing occasional locks from the apt..."
+removesEventualAptLocks() {
+  printf "Removing occasional locks from the apt..."
   sleep $MEDIUM_SLEEP_TIME
   sudo rm /var/lib/dpkg/lock-frontend
   sudo rm /var/cache/apt/archives/lock
 }
 
-function preparesEnvironment() {
-  echo -e "Preparing environment..."
+preparesEnvironment() {
+  printf "Preparing environment..."
   sudo apt update  
 }
 
-function installSnapAndItsApps() {
-  echo -e "Installing Applications from Snap..."
+installSnapAndItsApps() {
+  printf "Installing Applications from Snap..."
   sleep $MEDIUM_SLEEP_TIME
   sudo snap install slack --classic
   sudo snap install code --classic
   sudo snap install spotify
   sudo snap install postman
+  sudo snap install dbeaver-ce
   sudo snap install android-studio --classic
   sudo snap install node --edge --classic
   sudo snap install intellij-idea-community --classic --edge
@@ -94,8 +101,8 @@ function installSnapAndItsApps() {
   sudo snap install google-cloud-sdk --classic
 }
 
-function installRepositoryApps() {
-  echo -e "Installing Repository applications..."
+installRepositoryApps() {
+  printf "Installing Repository applications..."
   sleep $MEDIUM_SLEEP_TIME
   sudo apt install snapd -y
   sudo apt install default-jdk -y 
@@ -103,14 +110,14 @@ function installRepositoryApps() {
   sudo apt-get install curl -y   
 }
 
-function installManualDownloadedApp(){
-  echo -e "Installing manually downloaded applications..."
+installManualDownloadedApp(){
+  printf "Installing manually downloaded applications..."
   sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
   sudo chmod +x /usr/local/bin/docker-compose &&
   sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 }
 
-function main() {
+main() {
   clear
   showWelcomeMessage
 }
