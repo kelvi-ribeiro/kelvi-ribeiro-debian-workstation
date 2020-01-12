@@ -113,8 +113,8 @@ installRepositoryApps() {
 installManualDownloadedApp(){
   printf "Installing manually downloaded applications..."
   sleep $MEDIUM_SLEEP_TIME
-  installStackDonetCore()
-  installGoogleChrome()
+  installStackDonetCore
+  installGoogleChrome
 }
 
 installStackDonetCore(){  
