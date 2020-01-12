@@ -52,7 +52,8 @@ showListApps(){
   14. snapd
   15. spotify
   16. telegram-desktop 
-  17. . NET Core 3.1 ${NC}"
+  17. . NET Core 3.1 
+  18. Google Chrome ${NC}"
 }
 
 breakLine() {
@@ -113,16 +114,24 @@ installManualDownloadedApp(){
   printf "Installing manually downloaded applications..."
   sleep $MEDIUM_SLEEP_TIME
   installStackDonetCore()
+  installGoogleChrome()
 }
 
 installStackDonetCore(){  
-  printf "Installing Stack Dotnet Core"
+  printf "Installing Stack Dotnet Core..."
   sleep $MEDIUM_SLEEP_TIME
   sudo apt-get install apt-transport-https -y
   sudo apt-get update 
   sudo apt-get install dotnet-sdk-3.1 -y      
   sudo apt-get install aspnetcore-runtime-3.1 -y   
   sudo apt-get install dotnet-runtime-3.1 -y
+}
+
+installGoogleChrome(){
+  printf "Installing Stack Google Chrome..."
+  sleep $MEDIUM_SLEEP_TIME
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  sudo dpkg -i google-chrome-stable_current_amd64.deb
 }
 
 main() {
