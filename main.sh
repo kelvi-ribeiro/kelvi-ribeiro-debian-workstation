@@ -94,8 +94,7 @@ installSnapAndItsApps() {
   sudo snap install intellij-idea-community --classic --edge  
   sudo snap install chromium  
   sudo snap install ngrok
-  sudo snap install telegram-desktop
-  sudo snap install flameshot-app
+  sudo snap install telegram-desktop  
   sudo snap install google-cloud-sdk --classic
 }
 
@@ -108,6 +107,7 @@ installRepositoryApps() {
   sudo apt-get install curl -y   
   sudo apt install nodejs -y
   sudo apt install npm -y
+  sudo apt install flameshot -y
 }
 
 installManualDownloadedApp(){
