@@ -51,8 +51,8 @@ showListApps(){
   13. slack
   14. snapd
   15. spotify
-  16. telegram-desktop ${NC}"
-  
+  16. telegram-desktop 
+  17. . NET Core 3.1 ${NC}"
 }
 
 breakLine() {
@@ -109,7 +109,17 @@ installRepositoryApps() {
 }
 
 installManualDownloadedApp(){
-  
+  printf "Installing manually downloaded applications..."
+  installStackDonetCore()
+}
+
+installStackDonetCore(){  
+  printf "Installing Stack Dotnet Core"
+  sudo apt-get install apt-transport-https -y
+  sudo apt-get update 
+  sudo apt-get install dotnet-sdk-3.1 -y      
+  sudo apt-get install aspnetcore-runtime-3.1 -y   
+  sudo apt-get install dotnet-runtime-3.1 -y
 }
 
 main() {
