@@ -40,20 +40,19 @@ showListApps(){
   2. chromium
   3. vs-code
   4. curl
-  5. default-jdk
-  6. docker
-  7. docker-compose  
-  8. flameshot-app
-  9. git
-  10. google-cloud-sdk
-  11. intellij-idea-community  
-  12. ngrok
-  13. node
-  14. postman
-  15. slack
-  16. snapd
-  17. spotify
-  18. telegram-desktop ${NC}"
+  5. default-jdk  
+  6. flameshot-app
+  7. git
+  8. google-cloud-sdk
+  9. intellij-idea-community  
+  10. ngrok
+  11. node
+  12. postman
+  13. slack
+  14. snapd
+  15. spotify
+  16. telegram-desktop ${NC}"
+  
 }
 
 breakLine() {
@@ -92,8 +91,7 @@ installSnapAndItsApps() {
   sudo snap install dbeaver-ce
   sudo snap install android-studio --classic
   sudo snap install node --edge --classic
-  sudo snap install intellij-idea-community --classic --edge
-  sudo snap install docker
+  sudo snap install intellij-idea-community --classic --edge  
   sudo snap install chromium  
   sudo snap install ngrok
   sudo snap install telegram-desktop
@@ -111,10 +109,7 @@ installRepositoryApps() {
 }
 
 installManualDownloadedApp(){
-  printf "Installing manually downloaded applications..."
-  sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
-  sudo chmod +x /usr/local/bin/docker-compose &&
-  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  
 }
 
 main() {
