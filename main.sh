@@ -37,7 +37,7 @@ showWelcomeMessage() {
 showListApps(){
   printf "${CYAN} List of applications to be installed:
   1. android-studio
-  2. chromium
+  2. Google Chrome ${NC}
   3. vs-code
   4. curl
   5. default-jdk  
@@ -52,8 +52,7 @@ showListApps(){
   14. snapd
   15. spotify
   16. telegram-desktop 
-  17. . NET Core 3.1 
-  18. Google Chrome ${NC}"
+  17. . NET Core 3.1"
 }
 
 breakLine() {
@@ -92,7 +91,6 @@ installSnapAndItsApps() {
   sudo snap install dbeaver-ce
   sudo snap install android-studio --classic  
   sudo snap install intellij-idea-community --classic --edge  
-  sudo snap install chromium  
   sudo snap install ngrok
   sudo snap install telegram-desktop  
   sudo snap install google-cloud-sdk --classic
