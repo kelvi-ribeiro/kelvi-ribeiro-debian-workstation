@@ -7,7 +7,6 @@ Although made for a specific workstation, it also has the utility of serving as 
 ### Prerequisites
 
 * `curl` or `wget` should be installed
-* `git` should be installed
 
 ### Basic Installation
 
