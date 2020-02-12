@@ -37,7 +37,7 @@ showWelcomeMessage() {
 showListApps(){
   printf "${CYAN} List of applications to be installed:
   1. android-studio
-  2. Google Chrome ${NC}
+  2. Google Chrome 
   3. vs-code
   4. curl
   5. default-jdk  
@@ -52,7 +52,7 @@ showListApps(){
   14. snapd
   15. spotify
   16. telegram-desktop 
-  17. . NET Core 3.1"
+  17. . NET Core 3.1 ${NC} " 
 }
 
 breakLine() {
