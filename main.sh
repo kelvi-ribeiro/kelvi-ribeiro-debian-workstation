@@ -52,7 +52,8 @@ showListApps(){
   14. snapd
   15. spotify
   16. telegram-desktop 
-  17. . NET Core 3.1 ${NC} " 
+  17. Robo 3t
+  18. . NET Core 3.1 ${NC} " 
 }
 
 breakLine() {
@@ -94,6 +95,7 @@ installSnapAndItsApps() {
   sudo snap install ngrok
   sudo snap install telegram-desktop  
   sudo snap install google-cloud-sdk --classic
+  sudo snap install robo3t-snap
 }
 
 installRepositoryApps() {
@@ -113,6 +115,7 @@ installManualDownloadedApp(){
   sleep $MEDIUM_SLEEP_TIME
   installStackDonetCore
   installGoogleChrome
+  installFlatRemixTheme
 }
 
 installStackDonetCore(){  
@@ -133,6 +136,15 @@ installGoogleChrome(){
   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   sudo dpkg -i google-chrome-stable_current_amd64.deb
 }
+
+installFlatRemixTheme(){
+  printf "Installing Flat remix theme..."
+  git clone https://github.com/daniruiz/flat-remix
+  git clone https://github.com/daniruiz/flat-remix-gtk
+  mkdir -p ~/.icons && mkdir -p ~/.themes
+  cp -r flat-remix/Flat-Remix* ~/.icons/ && cp -r flat-remix-gtk/Flat-Remix-GTK* ~/.themes/
+}
+
 
 main() {
   clear
