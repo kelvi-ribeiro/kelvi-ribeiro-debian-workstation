@@ -53,7 +53,8 @@ showListApps(){
   15. spotify
   16. telegram-desktop 
   17. Robo 3t
-  18. . NET Core 3.1 ${NC} " 
+  18. Terminator
+  19. . NET Core 3.1 ${NC} " 
 }
 
 breakLine() {
@@ -116,6 +117,7 @@ installManualDownloadedApp(){
   installStackDonetCore
   installGoogleChrome
   installFlatRemixTheme
+  installTerminator
 }
 
 installStackDonetCore(){  
@@ -145,6 +147,13 @@ installFlatRemixTheme(){
   cp -r flat-remix/Flat-Remix* ~/.icons/ && cp -r flat-remix-gtk/Flat-Remix-GTK* ~/.themes/
 }
 
+installTerminator(){
+  printf "Installing Terminator..."
+  sudo add-apt-repository ppa: gnome-terminator 
+  sudo apt-get update 
+  sudo apt-get install terminator
+  sudo update-alternatives --config x-terminal-emulator
+}
 
 main() {
   clear
