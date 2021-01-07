@@ -54,7 +54,9 @@ showListApps(){
   16. telegram-desktop 
   17. Robo 3t
   18. Terminator
-  19. . NET Core 3.1 ${NC} " 
+  19. Docker
+  20. Docker Compose
+  21. . NET Core 3.1 ${NC} " 
 }
 
 breakLine() {
@@ -69,6 +71,7 @@ startInstallApps() {
   installRepositoryApps
   installSnapAndItsApps
   installManualDownloadedApp
+  intallCustomizations
 }
 
 removesEventualAptLocks() {
@@ -97,6 +100,7 @@ installSnapAndItsApps() {
   sudo snap install telegram-desktop  
   sudo snap install google-cloud-sdk --classic
   sudo snap install robo3t-snap
+  sudo snap install docker
 }
 
 installRepositoryApps() {
@@ -117,8 +121,8 @@ installManualDownloadedApp(){
   installStackDonetCore
   installGoogleChrome
   installFlatRemixTheme
+  installDockerCompose
   installTerminator
-  intallCustomizations
 }
 
 installStackDonetCore(){  
@@ -146,6 +150,13 @@ installFlatRemixTheme(){
   git clone https://github.com/daniruiz/flat-remix-gtk
   mkdir -p ~/.icons && mkdir -p ~/.themes
   cp -r flat-remix/Flat-Remix* ~/.icons/ && cp -r flat-remix-gtk/Flat-Remix-GTK* ~/.themes/
+}
+
+installDockerCompose(){
+  printf "Installing Docker Compose..."
+  sleep $MEDIUM_SLEEP_TIME
+  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
 }
 
 installTerminator(){
