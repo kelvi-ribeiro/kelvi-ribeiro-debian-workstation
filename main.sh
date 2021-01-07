@@ -56,7 +56,8 @@ showListApps(){
   18. Terminator
   19. Docker
   20. Docker Compose
-  21. . NET Core 3.1 ${NC} " 
+  21. Filezilla
+  22. . NET Core 3.1 ${NC} " 
 }
 
 breakLine() {
@@ -101,6 +102,7 @@ installSnapAndItsApps() {
   sudo snap install google-cloud-sdk --classic
   sudo snap install robo3t-snap
   sudo snap install docker
+  sudo snap install filezilla --beta
 }
 
 installRepositoryApps() {
